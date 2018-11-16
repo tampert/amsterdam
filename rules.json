@@ -1,0 +1,14 @@
+{
+    "rules": [
+        {
+            "pathname": "/en/es-autocomplete-forms",
+            "method": [
+                "GET"
+            ],
+            "dest": "www.zizoo.com"
+        },
+        {
+            "dest": "uj-prototype-yswsmvrbwq.now.sh"
+        }
+    ]
+}

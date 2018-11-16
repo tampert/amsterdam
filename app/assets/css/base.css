@@ -1,0 +1,18 @@
+html, body {
+    font-family: 'PT Sans', sans-serif;
+    overflow-x: hidden;
+    width: 100%;
+    backface-visibility: hidden;
+}
+
+.noscrolling {
+    position: fixed;
+}
+
+button, input, textarea {
+    font-family: 'PT Sans', sans-serif;
+}
+
+main {
+    min-height: calc(100vh - 80px);
+}
