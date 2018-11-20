@@ -68,13 +68,13 @@ class HomePage extends Component {
         return (
             <DefaultLayout showSearch={false}>
                 <div className="homepage">
-                    <div className="homepage__hero" style={{ backgroundImage: `url(${require('./images/hero.jpg')})` }}>
+                    <div className="homepage__hero" style={{ backgroundImage: `url(${require('./images/hero2.jpg')})` }}>
                         <div className="container">
                             <div className="row">
                                 <div className="col-xs-12">
                                     <div className="row center-xs middle-xs middle-sm center-sm middle-md center-md center-lg middle-lg homepage__hero__container">
                                         <div className="col-xs-10 col-sm-10 col-md-10 col-lg-8">
-                                            <h1>Boat holidays<br />made easy</h1>
+                                            <h1>Find your perfect new home<br />all over the world</h1>
                                             <div className="homepage__hero__form">
                                                 <SearchForm />
                                             </div>

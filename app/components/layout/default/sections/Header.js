@@ -36,7 +36,8 @@ export default class Header extends Component {
                             <div className="header__container ">
                                 <Link href="/">
                                     <a className="header__logo">
-                                        <img src={logo} />
+                                        GMNH
+                                        {/* <img src={logo} /> */}
                                     </a>
                                 </Link>
                                 <div className="header__mobile">
@@ -83,6 +84,8 @@ export default class Header extends Component {
                     .header { background-color: #F0F0F0; }
                     .header--white { background-color: #ffffff }
                     .header__container { height: 80px; display: flex; flex-direction: row; justify-content: flex-start; align-items: center; }
+                    .header__container a { font-size: 20px; }
+                    .header__container a:visited { color: #000000; }
                     .header__logo { width: 94px; flex: 0 0 94px; margin-right: 18px; }
                     .header__logo img { width: 100%; display: block; }
                     .header__form { flex: 1; }

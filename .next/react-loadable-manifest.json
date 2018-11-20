@@ -1,5 +1,5 @@
 {
-  "../../app/global/Theme": [
+  "../../../app/global/Theme": [
     {
       "id": 0,
       "name": "./app/global/Theme.js",
@@ -31,7 +31,7 @@
       "publicPath": "static/chunks/commons.833bd9ff5e8b03089ba2.js"
     }
   ],
-  "../../app/components/ui": [
+  "../../../app/components/ui": [
     {
       "id": 4,
       "name": "./app/components/ui/index.js",
@@ -135,7 +135,7 @@
       "publicPath": "static/chunks/commons.833bd9ff5e8b03089ba2.js"
     }
   ],
-  "../../modules/_core": [
+  "../modules/_core": [
     {
       "id": 18,
       "name": "./node_modules/core-js/library/modules/_core.js",
@@ -363,7 +363,7 @@
       "publicPath": "static/chunks/commons.833bd9ff5e8b03089ba2.js"
     }
   ],
-  "./defineProperty": [
+  "@babel/runtime-corejs2/helpers/defineProperty": [
     {
       "id": 59,
       "name": "./node_modules/@babel/runtime-corejs2/helpers/defineProperty.js",
@@ -831,7 +831,7 @@
       "publicPath": "static/chunks/commons.833bd9ff5e8b03089ba2.js"
     }
   ],
-  "./assertThisInitialized": [
+  "@babel/runtime-corejs2/helpers/assertThisInitialized": [
     {
       "id": 177,
       "name": "./node_modules/@babel/runtime-corejs2/helpers/assertThisInitialized.js",
@@ -1373,7 +1373,7 @@
       "publicPath": "static/chunks/commons.833bd9ff5e8b03089ba2.js"
     }
   ],
-  "../core-js/object/keys": [
+  "@babel/runtime-corejs2/core-js/object/keys": [
     {
       "id": 247,
       "name": "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js",
@@ -1469,7 +1469,7 @@
       "publicPath": "static/chunks/commons.833bd9ff5e8b03089ba2.js"
     }
   ],
-  "../core-js/get-iterator": [
+  "@babel/runtime-corejs2/core-js/get-iterator": [
     {
       "id": 259,
       "name": "./node_modules/@babel/runtime-corejs2/core-js/get-iterator.js",
@@ -1991,7 +1991,7 @@
       "publicPath": "static/chunks/commons.833bd9ff5e8b03089ba2.js"
     }
   ],
-  "./bs": [
+  "./bs.js": [
     {
       "id": 321,
       "name": "./node_modules/moment/locale/bs.js",

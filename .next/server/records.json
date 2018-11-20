@@ -214,22 +214,34 @@
       "static/zG5UfmWUkCptTtk18Xy8C/pages/boat.js": 20,
       "static/zG5UfmWUkCptTtk18Xy8C/pages/index.js": 21,
       "static/zG5UfmWUkCptTtk18Xy8C/pages/search.js": 22,
-      "static/zG5UfmWUkCptTtk18Xy8C/pages/_error.js": 23
+      "static/zG5UfmWUkCptTtk18Xy8C/pages/_error.js": 23,
+      "static/fBlSDjfHBwpxFiy133Zmi/pages/_app.js": 0,
+      "static/fBlSDjfHBwpxFiy133Zmi/pages/_document.js": 1,
+      "static/fBlSDjfHBwpxFiy133Zmi/pages/analytics.js": 2,
+      "static/fBlSDjfHBwpxFiy133Zmi/pages/boat/components.js": 3,
+      "static/fBlSDjfHBwpxFiy133Zmi/pages/boat/components/Lightbox.js": 4,
+      "static/fBlSDjfHBwpxFiy133Zmi/pages/boat/components/RequestForm.js": 5,
+      "static/fBlSDjfHBwpxFiy133Zmi/pages/boat/components/RequestFormModal.js": 6,
+      "static/fBlSDjfHBwpxFiy133Zmi/pages/boat/components/Reviews.js": 7,
+      "static/fBlSDjfHBwpxFiy133Zmi/pages/boat.js": 8,
+      "static/fBlSDjfHBwpxFiy133Zmi/pages/index.js": 9,
+      "static/fBlSDjfHBwpxFiy133Zmi/pages/search.js": 10,
+      "static/fBlSDjfHBwpxFiy133Zmi/pages/_error.js": 11
     },
     "bySource": {},
     "usedIds": [
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18,
-      19,
-      20,
-      21,
-      22,
-      23
+      0,
+      1,
+      10,
+      11,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
     ]
   }
 }
