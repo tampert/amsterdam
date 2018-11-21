@@ -68,7 +68,7 @@ class HomePage extends Component {
         return (
             <DefaultLayout showSearch={false}>
                 <div className="homepage">
-                    <div className="homepage__hero" style={{ backgroundImage: `url(${require('./images/hero2.jpg')})` }}>
+                    <div className="homepage__hero"  style={{ backgroundImage: `url(${require('./images/hero.jpg')})` }}>
                         <div className="container">
                             <div className="row">
                                 <div className="col-xs-12">
@@ -87,7 +87,7 @@ class HomePage extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-xs-12">
-                                <h2>Continue planning your boat trip</h2>
+                                <h2>Continue your search</h2>
                                 <div className="row">
                                     {trips.map((v, i) => {
                                         return (
@@ -98,8 +98,9 @@ class HomePage extends Component {
                                     })}
                                 </div>
                             </div>
-                            <div className="col-xs-12">
-                                <h2>Recommended for you</h2>
+                            {/* <div className="col-xs-12">
+                                <h2>Amazing homes in Berlin</h2>
+                                <small>Beautifull flats in the german metropole</small>
                                 <ScrollableSection margin={24} mobileMargin={15} className="search-page__headlines__list">
                                     {TempDATA.LOCATIONS.map((data, i) => {
                                         return (
@@ -138,9 +139,10 @@ class HomePage extends Component {
                                         )
                                     })}
                                 </div>
-                            </div>
+                            </div> */}
                             <div className="col-xs-12">
-                                <h2>The best deals for you</h2>
+                                <h2>Amazing homes in Berlin</h2>
+                                <small>Beautifull flats in the german metropole</small>
                                 <div className="row">
                                     {results.slice(0, 8).map((data) => {
                                         return (
@@ -184,9 +186,10 @@ class HomePage extends Component {
                 <style jsx>{`
                     .homepage { }
                     .homepage__hero { background-size: cover; background-position: center; position: relative; margin-bottom: 30px; }
+                    // .homepage__hero:before { content: ''; display: block; position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 1; background: rgba(0,0,0,0.3); } 
                     .homepage__hero__container { height: 400px; position: relative; }
                     .homepage__hero__container h1 { text-align: left; font-size: 70px; color: #ffffff; margin-bottom: 30px; font-weight: bold; line-height: 70px; }
-                    .homepage__hero__form { border-radius: 10px; position: relative; background-color: #F0F0F0;	box-shadow: 0 2px 20px 0 rgba(0,0,0,0.1); padding: 15px; }
+                    .homepage__hero__form { border-radius: 10px; position: relative; background-color: #FFFFFF;	box-shadow: 0 2px 20px 0 rgba(0,0,0,0.1); padding: 15px; }
                     .homepage__info { padding-top: 15px; padding-bottom: 15px }
                     @media all and (max-width: 1024px) {
                         .homepage__hero__container { height: auto; padding: 100px 0; } 

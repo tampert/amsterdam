@@ -22,6 +22,7 @@ const style = css`
     .button--primary { background-color: ${COLORS.primary}; color: #ffffff; }
     .button--secondary { background-color: ${COLORS.secondary}; color: #ffffff; }
     .button--white { color: ${COLORS.primary}; background-color: #ffffff; }
+    .button--black { color: ${COLORS.white}; background-color: #000000; }
     .button--blue { background-color: ${COLORS.blue}; color: #ffffff; }
     .button--loading { opacity: 0.88!important; pointer-events: none  }
     .button--loading span { opacity: 0!important; }

@@ -73,7 +73,7 @@ export default class AutoComplete extends Component {
             <div className="location-autocomplete">
                 <AsyncSelect
                     value={value}
-                    placeholder={!isFocused ? "Please enter your holiday destination" : null}
+                    placeholder={!isFocused ? "Where do you want to life?" : null}
                     components={{ Option, NoOptionsMessage }}
                     loadOptions={this.loadOptions}
                     cacheOptions
@@ -83,19 +83,21 @@ export default class AutoComplete extends Component {
                     onBlur={() => { this.setState({ isFocused: false }); }}
                     styles={{
                         loadingIndicator: (base) => { return { ...base, marginRight: 35 } },
-                        control: (base) => { return { ...base, backgroundColor: "#ffffff", width: "100%", border: 0, boxShadow: "0 2px 5px 0 rgba(0,0,0,0.10)", borderRadius: 5, height: 45 } },
+                        // boxShadow: "0 2px 5px 0 rgba(0,0,0,0.10)"
+                        control: (base) => { return { ...base, backgroundColor: "#ffffff", width: "100%", border: 0, boxShadow: "0 2px 5px 0 rgba(0,0,0,0)", borderRadius: 5, height: 45 } },
                         singleValue: (base) => { return { ...base, border: 0, fontSize: 16, color: COLORS.primary } },
                         indicatorSeparator: () => { return { display: "none" } },
                         input: (base) => { return { ...base, fontSize: 16, color: COLORS.primary } },
                         placeholder: (base) => { return { ...base, fontSize: 16, color: COLORS.primary } },
                         dropdownIndicator: () => { return { display: "none" } },
-                        menu: (base) => { return { ...base, border: 0, boxShadow: "0 2px 5px 0 rgba(0,0,0,0.10)", borderRadius: 5, '.parent > *': { paddingLeft: "20px!important" } } },
+                        // boxShadow: "0 2px 5px 0 rgba(0,0,0,0.10)"
+                        menu: (base) => { return { ...base, border: 0, boxShadow: "0 2px 5px 0 rgba(0,0,0,0)", borderRadius: 5, '.parent > *': { paddingLeft: "20px!important" } } },
                         option: (base) => { return { ...base, textAlign: 'left', paddingTop: 15, paddingBottom: 15 } },
                         menuList: (base) => { return { ...base, padding: 0 } },
                         loadingMessage: () => { return { display: "none" } }
                     }}
                 />
-                <i className="icon-search" onClick={this.props.onSearch}></i>
+                {/* <i className="icon-search" onClick={this.props.onSearch}></i> */}
                 <style jsx>{`
                     .location-autocomplete { position: relative; z-index: 10; text-align: left; }
                     .location-autocomplete > i { cursor: pointer; position: absolute; right: 12px; color: ${COLORS.primary}; top: 50%; transform: translateY(-50%); font-size:20px; }

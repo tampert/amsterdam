@@ -114,7 +114,7 @@ class SearchForm extends Component {
                             />
                         </NoSSR>
                     </div>
-                    <div>
+                    {/* <div>
                         <BookDatePicker
                             value={{ startDate: filters.startDate, endDate: filters.endDate }}
                             onChange={(value) => {
@@ -181,14 +181,14 @@ class SearchForm extends Component {
                             </div>
                         </FilterSelect>
                     </div>
-                    {isSearchPage && <span className="search-form__all-button" onClick={() => { this.setState({ showAllFilters: true }); }}>All Filters</span>}
-                    {!isSearchPage && <Button color="secondary" className="search-form__submit-button" loading={loading} onClick={this.triggerSearch}>Search</Button>}
+                    {isSearchPage && <span className="search-form__all-button" onClick={() => { this.setState({ showAllFilters: true }); }}>All Filters</span>} */}
+                    {!isSearchPage && <Button color="black" className="search-form__submit-button" loading={loading} onClick={this.triggerSearch}>Search</Button>}
                     <style jsx>{`
                     .search-form { display: flex; flex-direction: row; justify-content: flex-start; align-items: center }
                     .search-form > * { margin-right: 10px; }
                     .search-form--home .search-form__location { flex: 1 }
                     .search-form__location { flex: 0 0 325px; width: 325px; }
-                    .search-form__all-button { user-select: none; white-space: nowrap; cursor: pointer; font-size: 14px; line-height: 19px; color: ${COLORS.primary}; padding: 0 20px; height: 45px; text-decoration: underline; display: flex; flex-direction: row; justify-content: flex-start; align-items: center; box-shadow: 0 1px 4px 0 rgba(0,0,0,0.1); border-radius: 5px; border: 1px solid rgba(9, 72, 86, 0.2); }
+                    .search-form__all-button { user-select: none; white-space: nowrap; cursor: pointer; font-size: 14px; line-height: 19px; color: ${COLORS.white}; padding: 0 20px; height: 45px; text-decoration: underline; display: flex; flex-direction: row; justify-content: flex-start; align-items: center; box-shadow: 0 1px 4px 0 rgba(0,0,0,0.1); border-radius: 5px; border: 1px solid rgba(9, 72, 86, 0.2); }
                     .search-form :global(.search-form__counter) { border-bottom: 1px solid #EEF1F2 }
                     .search-form :global(.search-form__counter:last-child) { border-bottom: 0; }
                     .search-form :global(.search-form__submit-button) { padding-top: 0; padding-bottom: 0; height: 45px; line-height: 44px }

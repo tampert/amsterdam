@@ -86,7 +86,7 @@ export default class Header extends Component {
                     .header__container { height: 80px; display: flex; flex-direction: row; justify-content: flex-start; align-items: center; }
                     .header__container a { font-size: 20px; }
                     .header__container a:visited { color: #000000; }
-                    .header__logo { width: 94px; flex: 0 0 94px; margin-right: 18px; }
+                    .header__logo { width: 94px; flex: 0 0 94px; margin-right: 18px; font-weight:bold;}
                     .header__logo img { width: 100%; display: block; }
                     .header__form { flex: 1; }
                     .header__nav { margin-left: auto; }
