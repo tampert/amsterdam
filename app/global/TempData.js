@@ -10,13 +10,15 @@ const LOCATIONS = [
         url: { pathname: "/search", query: { location: data.slug } }
     }
 })
-
+// { title: "Denmark", slug: "denmark", image: require("../../pages/index/images/escapes/denmark.jpg") },
+// { title: "Sweden", slug: "sweden", image: require("../../pages/index/images/escapes/sweden.jpg") }
 const ESCAPES = [
-    { title: "Denmark", slug: "denmark", image: require("../../pages/index/images/escapes/denmark.jpg") },
     { title: "Germany", slug: "germany", image: require("../../pages/index/images/escapes/germany.jpg") },
+    { title: "Denmark", slug: "denmark", image: require("../../pages/index/images/escapes/germany.jpg") },
     { title: "Iceland", slug: "iceland", image: require("../../pages/index/images/escapes/iceland.jpg") },
     { title: "Norway", slug: "norway", image: require("../../pages/index/images/escapes/norway.jpg") },
-    { title: "Sweden", slug: "sweden", image: require("../../pages/index/images/escapes/sweden.jpg") }
+    { title: "Sweden", slug: "sweden", image: require("../../pages/index/images/escapes/norway.jpg") },
+    
 ].map((data) => {
     return {
         ...data,

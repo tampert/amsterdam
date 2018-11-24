@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { COLORS } from '../../../../global/Theme';
 
 // Image
-import logo from '../../../../assets/images/logo.svg';
+// import logo from '../../../../assets/images/logo.svg';
 
 const Footer = (props) => (
     <footer className="footer">
@@ -14,16 +14,16 @@ const Footer = (props) => (
                 <div className="col-xs-12">
                     <div className="row">
                         <div className="col-md-3 col-sm-6 col-xs-12 footer__links">
-                            <strong>Zizoo</strong>
+                            <strong>GMNH</strong>
                             <ul>
                                 <li>
-                                    <a href="#">About Zizoo</a>
+                                    <a href="#">About GMNH</a>
                                 </li>
                                 <li>
-                                    <a href="#">Careers at Zizoo</a>
+                                    <a href="#">Careers at GMNH</a>
                                 </li>
                                 <li>
-                                    <a href="#">Team Zizoo</a>
+                                    <a href="#">Team GMNH</a>
                                 </li>
                                 <li>
                                     <a href="#">Press</a>
@@ -40,13 +40,13 @@ const Footer = (props) => (
                                     <a href="">Destination Guides</a>
                                 </li>
                                 <li>
-                                    <a href="#">Zizoo magazine</a>
+                                    <a href="#">GMNH magazine</a>
                                 </li>
                                 <li>
                                     <a href="#">Sailing Routes</a>
                                 </li>
                                 <li>
-                                    <a href="#">Zizoo Deals</a>
+                                    <a href="#">GMNH Deals</a>
                                 </li>
                             </ul>
                         </div>
@@ -76,10 +76,10 @@ const Footer = (props) => (
                     <div className="footer__bottom">
                         <Link href="/">
                             <a className="footer__logo">
-                                <img src={logo} />
+                                GMNH
                             </a>
                         </Link>
-                        <span className="footer__copyright">2014—2018 Zizooboats GmbH™ | All rights reserved.</span>
+                        <span className="footer__copyright">2018 GMNH GmbH™ | All rights reserved.</span>
                     </div>
                 </div>
             </div>
@@ -88,9 +88,10 @@ const Footer = (props) => (
             .footer { padding-top: 100px; }
             .footer__links { color: ${COLORS.primary}; font-size: 15px;	line-height: 21px; padding-bottom: 20px }
             .footer__links a { color: ${COLORS.primary}; }
+            .footer__bottom a:visited { color: #000000; }
             .footer__links span { display: block; }
             .footer__links strong { display: block; }
-            .footer__bottom { padding: 24px 0; border-top: 1px solid rgba(9,72,86,0.1); display: flex; flex-direction: row; align-items: center; }
+            .footer__bottom { padding: 24px 0; border-top: 1px solid rgba(9,72,86,0.1); display: flex; flex-direction: row; align-items: center; font-size:22px; font-weight:bold; }
             .footer__copyright { font-size: 12px; line-height: 14px; color: ${COLORS.primary}; padding-left: 30px; }
             @media all and (max-width: 768px) {
                 .footer__bottom { padding: 40px 0; flex-direction: column; align-items: center; justify-content: flex-start; } 

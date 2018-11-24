@@ -1,6 +1,6 @@
 // Libraries
 import React, { Component } from 'react';
-import Router from 'next/router';
+// import Router from 'next/router';
 import { connect } from 'react-redux';
 
 // API
@@ -9,7 +9,7 @@ import { BoatService, MagazineService } from '../../app/services';
 // Components
 import { DefaultLayout } from '../../app/components/layout';
 import { InfoCard, ShadowCard, BoatCard, NewsCard, Banner, Loading } from '../../app/components/ui';
-import { ScrollableSection } from '../../app/components/utils';
+// import { ScrollableSection } from '../../app/components/utils';
 import { SearchForm } from '../../app/components/layout/default/sections';
 
 // Redux 
@@ -17,7 +17,7 @@ import { Boat } from '../../app/redux/actions';
 import { DEFAULT_FILTERS, DEFAULT_PARAMS } from '../../app/redux/reducers/Boat';
 
 // Global
-import { TempDATA } from '../../app/global';
+// import { TempDATA } from '../../app/global';
 
 class HomePage extends Component {
 
@@ -153,7 +153,7 @@ class HomePage extends Component {
                                     })}
                                 </div>
                             </div>
-                            <div className="col-xs-12">
+                            {/* <div className="col-xs-12">
                                 <h2>Your Escapes in the north.</h2>
                                 <ScrollableSection margin={24} mobileMargin={15} className="search-page__headlines__list">
                                     {TempDATA.ESCAPES.map((data, i) => {
@@ -179,7 +179,7 @@ class HomePage extends Component {
                                         )
                                     })}
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

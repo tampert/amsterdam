@@ -172,7 +172,7 @@ class RequestForm extends Component {
                                                 <span>2.280,00 €</span>
                                             </div>
                                             <div className="rd">
-                                                <span>Zizoo Discount:</span>
+                                                <span>GMNH Discount:</span>
                                                 <span>-456,00 €</span>
                                             </div>
                                             <div>

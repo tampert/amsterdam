@@ -11,7 +11,7 @@ import { COLORS } from '../../../../global/Theme';
 import { SearchForm, MobileMenu } from './';
 
 // Image
-import logo from '../../../../assets/images/logo.svg';
+//import logo from '../../../../assets/images/logo.svg';
 
 export default class Header extends Component {
 
@@ -43,7 +43,7 @@ export default class Header extends Component {
                                 <div className="header__mobile">
                                     <Link href="/">
                                         <a className="header__logo">
-                                            <img src={logo} />
+                                        GMNH
                                         </a>
                                     </Link>
                                     <i className="icon-menu header__mobile__hamburger" onClick={() => { this.setState({ menu: true }); }}></i>
@@ -84,7 +84,7 @@ export default class Header extends Component {
                     .header { background-color: #F0F0F0; }
                     .header--white { background-color: #ffffff }
                     .header__container { height: 80px; display: flex; flex-direction: row; justify-content: flex-start; align-items: center; }
-                    .header__container a { font-size: 20px; }
+                    .header__container a { font-size: 30px; }
                     .header__container a:visited { color: #000000; }
                     .header__logo { width: 94px; flex: 0 0 94px; margin-right: 18px; font-weight:bold;}
                     .header__logo img { width: 100%; display: block; }
@@ -101,7 +101,7 @@ export default class Header extends Component {
                     @media all and (max-width: 1024px) {
                         .header__container { flex-direction: column; justify-content: flex-start; align-items: flex-start; height: auto }
                         .header__container > .header__logo { display: none }
-                        .header__mobile { display: flex; } 
+                        .header__mobile { display: flex; font-size: 20px; } 
                         .header__nav { display: none }
                         .header__form { width: 100%; }
                     }
