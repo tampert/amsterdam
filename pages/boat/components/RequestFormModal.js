@@ -46,7 +46,7 @@ class RequestFormModal extends Component {
                             <div className="requestform-modal__thankyou" ref={(ref) => { this.thankyou = ref; }}>
                                 <div style={{ height: thankyouH }}>
                                     <div className="requestform-modal__thankyou__t">Thank you! </div>
-                                    <div className="requestform-modal__thankyou__d">Thank you for your enquiry with Zizoo. This is not a confirmed reservation - at least not yet.<br /><br />Our fantastic customer service team will be in touch soon! We encourage you not to miss out on this availability. It’s the busiest time of year for sailing and boats are being booked fast!</div>
+                                    <div className="requestform-modal__thankyou__d">Thank you for your enquiry with GMNH. This is not a confirmed reservation - at least not yet.<br /><br />Our fantastic customer service team will be in touch soon! We encourage you not to miss out on this availability. It’s the busiest time of year for sailing and boats are being booked fast!</div>
                                     <Button onClick={() => { this.modal.close(); }}>Close window</Button>
                                 </div>
                                 <img src={require("../images/thankyou.jpg")} />
