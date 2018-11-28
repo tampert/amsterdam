@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 // import Router from 'next/router';
 import { connect } from 'react-redux';
 
-// API
-import { BoatService, MagazineService } from '../../app/services';
+// API ,MagazineService
+import { BoatService } from '../../app/services';
 
 // Components
 import { DefaultLayout } from '../../app/components/layout';
@@ -22,6 +22,9 @@ import { DEFAULT_FILTERS, DEFAULT_PARAMS } from '../../app/redux/reducers/Boat';
 class HomePage extends Component {
 
     static async getInitialProps() {
+        // const url = 'https://api.nestoria.de/api?encoding=json&pretty=1&action=search_listings&country=UK&listing_type=buy&place_name=berlin'
+
+        // const param ={ 'action':'search_listings','encoding':'json','foo':'bar', 'pretty':'1', 'country':'UK', 'listing_type': 'buy', 'place_name':'berlin'}
         const response = await BoatService.getAll();
         return { response }
     }
@@ -49,6 +52,7 @@ class HomePage extends Component {
                 { image: require("./images/personas/party.jpg"), params: { nr_guests: 12, cabin_from: 6, boatType: "catamaran,sailboat" } },
                 { image: require("./images/personas/professional.jpg"), params: { nr_guests: 4, cabin_from: 1, boatType: "catamaran,sailboat" } }
             ],
+            listings : props.response.listings,
             posts: []
         }
     }
@@ -58,9 +62,9 @@ class HomePage extends Component {
         this.props.setParams(DEFAULT_PARAMS);
 
         // Get Posts
-        MagazineService.getLatestPosts({ include: [856, 339, 2934, 7527] }).then((posts) => {
-            this.setState({ posts });
-        });
+        // MagazineService.getLatestPosts({ include: [856, 339, 2934, 7527] }).then((posts) => {
+        //     this.setState({ posts });
+        // });
     }
 
     render() {
@@ -147,7 +151,9 @@ class HomePage extends Component {
                                     {results.slice(0, 8).map((data) => {
                                         return (
                                             <div key={`boat-${data.id}`} className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                                <BoatCard data={data} />
+                                                Hier zou data moeten staan ;
+                                                ${data}
+                                                {/* <BoatCard data={data} /> */}
                                             </div>
                                         )
                                     })}
