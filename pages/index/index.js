@@ -31,7 +31,7 @@ class HomePage extends Component {
 
     constructor(props) {
         super(props);
-
+        console.log(props.response)
         // Default States
         this.state = {
             results: props.response.items || [],
@@ -52,7 +52,7 @@ class HomePage extends Component {
                 { image: require("./images/personas/party.jpg"), params: { nr_guests: 12, cabin_from: 6, boatType: "catamaran,sailboat" } },
                 { image: require("./images/personas/professional.jpg"), params: { nr_guests: 4, cabin_from: 1, boatType: "catamaran,sailboat" } }
             ],
-            listings : props.response.listings,
+            listings : props.response || [],
             posts: []
         }
     }
@@ -68,7 +68,7 @@ class HomePage extends Component {
     }
 
     render() {
-        const { results, trips, posts, usps, personas } = this.state;
+        const { results, trips, posts, usps, personas, listings } = this.state;
         return (
             <DefaultLayout showSearch={false}>
                 <div className="homepage">
@@ -148,10 +148,24 @@ class HomePage extends Component {
                                 <h2>Amazing homes in Berlin</h2>
                                 <small>Beautifull flats in the german metropole</small>
                                 <div className="row">
+                                listings :
+                                {listings.slice(0, 8).map((data) => {
+                                        return (
+                                            <div key={`boat-${data.id}`} className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                                Hier zou data moeten staan ;
+                                                {/* <input type="text" value={data.price} /> */}
+                                               
+                                                {/* <BoatCard data={data} /> */}
+                                            </div>
+                                        )
+                                    })}
+
+                                en hier weer iets anders
                                     {results.slice(0, 8).map((data) => {
                                         return (
                                             <div key={`boat-${data.id}`} className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                                                 Hier zou data moeten staan ;
+                                                {/* <input type="text" value={data.price} /> */}
                                                 ${data}
                                                 {/* <BoatCard data={data} /> */}
                                             </div>
