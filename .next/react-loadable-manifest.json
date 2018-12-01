@@ -135,7 +135,7 @@
       "publicPath": "static/chunks/commons.6d106e83182bb67b5178.js"
     }
   ],
-  "../../modules/_core": [
+  "../modules/_core": [
     {
       "id": 18,
       "name": "./node_modules/core-js/library/modules/_core.js",
@@ -483,7 +483,7 @@
       "publicPath": "static/chunks/commons.6d106e83182bb67b5178.js"
     }
   ],
-  "../shapes/DayOfWeekShape": [
+  "./DayOfWeekShape": [
     {
       "id": 89,
       "name": "./node_modules/react-dates/lib/shapes/DayOfWeekShape.js",
@@ -491,7 +491,7 @@
       "publicPath": "static/chunks/commons.6d106e83182bb67b5178.js"
     }
   ],
-  "../shapes/OpenDirectionShape": [
+  "./OpenDirectionShape": [
     {
       "id": 90,
       "name": "./node_modules/react-dates/lib/shapes/OpenDirectionShape.js",
@@ -571,7 +571,7 @@
       "publicPath": "static/chunks/commons.6d106e83182bb67b5178.js"
     }
   ],
-  "../shapes/IconPositionShape": [
+  "./IconPositionShape": [
     {
       "id": 104,
       "name": "./node_modules/react-dates/lib/shapes/IconPositionShape.js",
@@ -831,7 +831,7 @@
       "publicPath": "static/chunks/commons.6d106e83182bb67b5178.js"
     }
   ],
-  "@babel/runtime-corejs2/helpers/assertThisInitialized": [
+  "./assertThisInitialized": [
     {
       "id": 177,
       "name": "./node_modules/@babel/runtime-corejs2/helpers/assertThisInitialized.js",
@@ -1469,7 +1469,7 @@
       "publicPath": "static/chunks/commons.6d106e83182bb67b5178.js"
     }
   ],
-  "@babel/runtime-corejs2/core-js/get-iterator": [
+  "../core-js/get-iterator": [
     {
       "id": 259,
       "name": "./node_modules/@babel/runtime-corejs2/core-js/get-iterator.js",
@@ -1667,7 +1667,7 @@
       "publicPath": "static/chunks/commons.6d106e83182bb67b5178.js"
     }
   ],
-  "./components/Placeholder": [
+  "./Placeholder": [
     {
       "id": 283,
       "name": "./node_modules/react-select/lib/components/Placeholder.js",
@@ -1879,7 +1879,7 @@
       "publicPath": "static/chunks/commons.6d106e83182bb67b5178.js"
     }
   ],
-  "./ar.js": [
+  "./ar": [
     {
       "id": 307,
       "name": "./node_modules/moment/locale/ar.js",
@@ -1887,7 +1887,7 @@
       "publicPath": "static/chunks/commons.6d106e83182bb67b5178.js"
     }
   ],
-  "./ar-dz.js": [
+  "./ar-dz": [
     {
       "id": 308,
       "name": "./node_modules/moment/locale/ar-dz.js",
