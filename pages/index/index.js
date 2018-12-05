@@ -31,7 +31,7 @@ class HomePage extends Component {
 
     constructor(props) {
         super(props);
-        console.log(props.response)
+        // console.log(props.response)
         // Default States
         this.state = {
             results: props.response.items || [],
@@ -148,29 +148,44 @@ class HomePage extends Component {
                                 <h2>Amazing homes in Berlin</h2>
                                 <small>Beautifull flats in the german metropole</small>
                                 <div className="row">
-                                listings :
                                 {listings.slice(0, 8).map((data) => {
+                                        let o = {}
+                                            o.thumbnail
+                                            // o.images
+                                            o.id = data.id
+                                            o.discount =data.commission
+                                            o.type = data.listing_type
+                                            o.brand = data.title
+                                            o.model = data.property_type
+                                            o.year = data.construction_year
+                                            o.length = data.longitude
+                                            o.cabins = data.room_number
+                                            o.guests =data.bedroom_number
+                                            o.locality = data.commission
+                                            o.country = data.title
+                                            o.oldPrice = data.price_low
+                                            o.price = data.price_formatted
+                                            o.url = data.lister_url
+                                            o.charterType =''
+                                            o.reviews =data.summary
+                                           
                                         return (
-                                            <div key={`boat-${data.id}`} className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                                Hier zou data moeten staan ;
-                                                {/* <input type="text" value={data.price} /> */}
-                                               
+                                             <div key={`boat-${data.id}`} className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                                <BoatCard data={o} />
                                                 {/* <BoatCard data={data} /> */}
                                             </div>
                                         )
                                     })}
-
-                                en hier weer iets anders
-                                    {results.slice(0, 8).map((data) => {
+                                    {/* {results.slice(0, 8).map((data) => {
                                         return (
                                             <div key={`boat-${data.id}`} className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                                Hier zou data moeten staan ;
+                                                || results 
                                                 {/* <input type="text" value={data.price} /> */}
                                                 ${data}
                                                 {/* <BoatCard data={data} /> */}
                                             </div>
                                         )
-                                    })}
+                                    })} */}
                                 </div>
                             </div>
                             {/* <div className="col-xs-12">
