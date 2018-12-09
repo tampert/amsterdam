@@ -24,6 +24,7 @@ const style = css`
     .button--white { color: ${COLORS.primary}; background-color: #ffffff; }
     .button--black { color: ${COLORS.white}; background-color: #000000; }
     .button--blue { background-color: ${COLORS.blue}; color: #ffffff; }
+    .button--black--outline{ background-color: ${COLORS.white}; color: #000000; border:1px solid #000000; }
     .button--loading { opacity: 0.88!important; pointer-events: none  }
     .button--loading span { opacity: 0!important; }
     .button--loading:before { display: none!important; }

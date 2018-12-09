@@ -146,14 +146,14 @@ class HomePage extends Component {
                             </div> */}
                             <div className="col-xs-12">
                                 <h2>Amazing homes in Berlin</h2>
-                                <small>Beautifull flats in the german metropole</small>
+                                <small>Beautifull flats in the german metropole</small><br />
                                 <div className="row">
-                                {listings.slice(0, 8).map((data) => {
+                                {listings.slice(0, 8).map((data, index) => {
                                         let o = {}
-                                            o.thumbnail
+                                            o.thumbnail = data.img_url
                                             // o.images
-                                            o.id = data.id
-                                            o.discount =data.commission
+                                            o.id = index
+                                            o.discount = data.commission
                                             o.type = data.listing_type
                                             o.brand = data.title
                                             o.model = data.property_type
@@ -164,13 +164,12 @@ class HomePage extends Component {
                                             o.locality = data.commission
                                             o.country = data.title
                                             o.oldPrice = data.price_low
-                                            o.price = data.price_formatted
+                                            o.price = data.price
                                             o.url = data.lister_url
                                             o.charterType =''
                                             o.reviews =data.summary
-                                           
                                         return (
-                                             <div key={`boat-${data.id}`} className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                            <div key={`boat-${o.id}`} className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                                                 <BoatCard data={o} />
                                                 {/* <BoatCard data={data} /> */}
                                             </div>
@@ -181,11 +180,10 @@ class HomePage extends Component {
                                             <div key={`boat-${data.id}`} className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                                                 || results 
                                                 {/* <input type="text" value={data.price} /> */}
-                                                ${data}
+                                                {/* ${data} */}
                                                 {/* <BoatCard data={data} /> */}
                                             </div>
                                         )
-                                    })} */}
                                 </div>
                             </div>
                             {/* <div className="col-xs-12">
@@ -217,7 +215,6 @@ class HomePage extends Component {
                             </div> */}
                         </div>
                     </div>
-                </div>
                 <style jsx>{`
                     .homepage { }
                     .homepage__hero { background-size: cover; background-position: center; position: relative; margin-bottom: 30px; }

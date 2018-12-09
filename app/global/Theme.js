@@ -6,7 +6,9 @@ const COLORS = {
     grayLight: '#f5f5f5',
     orange: '#DE6449',
     black: '#000000',
-    white:'#FFFFFF'
+    white:'#FFFFFF',
+    lightgreen: '#37b281',
+    lightgray: '#333333'
 }
 
 export {
