@@ -9,7 +9,7 @@ import { BoatService } from '../../app/services';
 // Components
 import { DefaultLayout } from '../../app/components/layout';
 import { InfoCard, ShadowCard, BoatCard, NewsCard, Banner, Loading } from '../../app/components/ui';
-// import { ScrollableSection } from '../../app/components/utils';
+import { ScrollableSection } from '../../app/components/utils';
 import { SearchForm } from '../../app/components/layout/default/sections';
 
 // Redux 
@@ -17,16 +17,20 @@ import { Boat } from '../../app/redux/actions';
 import { DEFAULT_FILTERS, DEFAULT_PARAMS } from '../../app/redux/reducers/Boat';
 
 // Global
-// import { TempDATA } from '../../app/global';
+import { TempDATA } from '../../app/global';
 
 class HomePage extends Component {
 
     static async getInitialProps() {
-        // const url = 'https://api.nestoria.de/api?encoding=json&pretty=1&action=search_listings&country=UK&listing_type=buy&place_name=berlin'
-
-        // const param ={ 'action':'search_listings','encoding':'json','foo':'bar', 'pretty':'1', 'country':'UK', 'listing_type': 'buy', 'place_name':'berlin'}
-        const response = await BoatService.getAll();
-        return { response }
+        // const response = await BoatService.getAll();
+        // return { response }
+        // const p= `{
+        //         query: query { country { country_name }}
+        // }`
+        const param ={ 'action':'search_listings','encoding':'json','foo':'bar', 'pretty':'1', 'country':'UK', 'listing_type': 'buy', 'place_name':'berlin'}
+        const { defaultFilters, defaultParams } = BoatService.getUrlParams(param);
+        const response = await BoatService.getAll(param);
+        return { response, defaultFilters, defaultParams };
     }
 
     constructor(props) {
@@ -36,8 +40,8 @@ class HomePage extends Component {
         this.state = {
             results: props.response.items || [],
             trips: [
-                { title: "Dubrovnik, Croatia", description: "July 10 - July 17", slug: "dubrovnik", image: require("./images/cities/dubrovnik.jpg") },
-                { title: "Santorini, Greece", description: "July 10 - July 17", slug: "santorini", image: require("./images/cities/mykonos.jpg") },
+                { title: "Dubrovnik, Croatia", description: "July 10 - July 17", slug: "berlin", image: require("./images/cities/dubrovnik.jpg") },
+                { title: "Santorini, Greece", description: "July 10 - July 17", slug: "amsterdam", image: require("./images/cities/mykonos.jpg") },
                 { title: "Mallorca, Spain", description: "July 10 - July 17", slug: "mallorca", image: require("./images/cities/mallorca.jpg") }
             ],
             usps: [
@@ -96,7 +100,7 @@ class HomePage extends Component {
                                     {trips.map((v, i) => {
                                         return (
                                             <div className="col-md-3 col-sm-6 col-xs-12" key={`trips-${i}`}>
-                                                <InfoCard {...v} url={{ pathname: "/search", query: { location: v.slug, date_from: "2019-06-10" } }} />
+                                                <InfoCard {...v} url={{ pathname: "/search", query: { place_name: v.slug, listing_type: "buy" , country:"UK", pretty: "1", foo:"bar", action:"search_listings", encoding:"json"} }} />
                                             </div>
                                         )
                                     })}
@@ -146,14 +150,14 @@ class HomePage extends Component {
                             </div> */}
                             <div className="col-xs-12">
                                 <h2>Amazing homes in Berlin</h2>
-                                <small>Beautifull flats in the german metropole</small>
+                                <small>Beautifull flats in the german metropole</small><br />
                                 <div className="row">
-                                {listings.slice(0, 8).map((data) => {
+                                {listings.slice(0, 8).map((data, index) => {
                                         let o = {}
-                                            o.thumbnail
+                                            o.thumbnail = data.img_url
                                             // o.images
-                                            o.id = data.id
-                                            o.discount =data.commission
+                                            o.id = index
+                                            o.discount = data.commission
                                             o.type = data.listing_type
                                             o.brand = data.title
                                             o.model = data.property_type
@@ -164,41 +168,31 @@ class HomePage extends Component {
                                             o.locality = data.commission
                                             o.country = data.title
                                             o.oldPrice = data.price_low
-                                            o.price = data.price_formatted
+                                            o.price = data.price
                                             o.url = data.lister_url
                                             o.charterType =''
                                             o.reviews =data.summary
-                                           
                                         return (
-                                             <div key={`boat-${data.id}`} className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                                            <div key={`boat-${o.id}`} className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                                                 <BoatCard data={o} />
                                                 {/* <BoatCard data={data} /> */}
                                             </div>
                                         )
                                     })}
-                                    {/* {results.slice(0, 8).map((data) => {
-                                        return (
-                                            <div key={`boat-${data.id}`} className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                                || results 
-                                                {/* <input type="text" value={data.price} /> */}
-                                                ${data}
-                                                {/* <BoatCard data={data} /> */}
-                                            </div>
-                                        )
-                                    })} */}
                                 </div>
                             </div>
-                            {/* <div className="col-xs-12">
-                                <h2>Your Escapes in the north.</h2>
+                            </div>
+                            <div className="col-xs-12">
+                                <h2>Look for a new home in there German cities.</h2>
                                 <ScrollableSection margin={24} mobileMargin={15} className="search-page__headlines__list">
                                     {TempDATA.ESCAPES.map((data, i) => {
                                         return (
-                                            <ShadowCard className="search-page__headlines__item" key={`recommends-${i}`} data={{ ...data, url: { pathname: "/search", query: { location: data.slug } } }} />
+                                            <ShadowCard className="search-page__headlines__item" key={`recommends-${i}`} data={{ ...data, url: { pathname: "/search", query: { place_name: data.slug, listing_type: "buy" , country:"UK", pretty: "1", foo:"bar", action:"search_listings", encoding:"json"} } }} />
                                         )
                                     })}
                                 </ScrollableSection>
                             </div>
-                            <div className="col-xs-12">
+                            {/* <div className="col-xs-12">
                                 <h2>Get tipps for your boat trip in our Magazin</h2>
                                 {posts.length == 0 ? <Loading show={true} /> : null}
                                 <div className="row">
@@ -217,7 +211,6 @@ class HomePage extends Component {
                             </div> */}
                         </div>
                     </div>
-                </div>
                 <style jsx>{`
                     .homepage { }
                     .homepage__hero { background-size: cover; background-position: center; position: relative; margin-bottom: 30px; }
