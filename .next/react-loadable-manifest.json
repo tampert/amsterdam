@@ -31,7 +31,7 @@
       "publicPath": "static/chunks/commons.4a773edd5ef0a78b4375.js"
     }
   ],
-  "../../../app/components/ui": [
+  "../../app/components/ui": [
     {
       "id": 4,
       "name": "./app/components/ui/index.js",
@@ -135,7 +135,7 @@
       "publicPath": "static/chunks/commons.4a773edd5ef0a78b4375.js"
     }
   ],
-  "../modules/_core": [
+  "../../modules/_core": [
     {
       "id": 18,
       "name": "./node_modules/core-js/library/modules/_core.js",
@@ -491,7 +491,7 @@
       "publicPath": "static/chunks/commons.4a773edd5ef0a78b4375.js"
     }
   ],
-  "../shapes/OpenDirectionShape": [
+  "./OpenDirectionShape": [
     {
       "id": 90,
       "name": "./node_modules/react-dates/lib/shapes/OpenDirectionShape.js",
@@ -571,7 +571,7 @@
       "publicPath": "static/chunks/commons.4a773edd5ef0a78b4375.js"
     }
   ],
-  "../shapes/IconPositionShape": [
+  "./IconPositionShape": [
     {
       "id": 104,
       "name": "./node_modules/react-dates/lib/shapes/IconPositionShape.js",
@@ -691,7 +691,7 @@
       "publicPath": "static/chunks/commons.4a773edd5ef0a78b4375.js"
     }
   ],
-  "../shapes/DisabledShape": [
+  "./DisabledShape": [
     {
       "id": 120,
       "name": "./node_modules/react-dates/lib/shapes/DisabledShape.js",
@@ -1373,7 +1373,7 @@
       "publicPath": "static/chunks/commons.4a773edd5ef0a78b4375.js"
     }
   ],
-  "@babel/runtime-corejs2/core-js/object/keys": [
+  "../core-js/object/keys": [
     {
       "id": 247,
       "name": "./node_modules/@babel/runtime-corejs2/core-js/object/keys.js",
@@ -1469,7 +1469,7 @@
       "publicPath": "static/chunks/commons.4a773edd5ef0a78b4375.js"
     }
   ],
-  "@babel/runtime-corejs2/core-js/get-iterator": [
+  "../core-js/get-iterator": [
     {
       "id": 259,
       "name": "./node_modules/@babel/runtime-corejs2/core-js/get-iterator.js",
@@ -1643,7 +1643,7 @@
       "publicPath": "static/chunks/commons.4a773edd5ef0a78b4375.js"
     }
   ],
-  "./Input": [
+  "./components/Input": [
     {
       "id": 280,
       "name": "./node_modules/react-select/lib/components/Input.js",
@@ -1667,7 +1667,7 @@
       "publicPath": "static/chunks/commons.4a773edd5ef0a78b4375.js"
     }
   ],
-  "./Placeholder": [
+  "./components/Placeholder": [
     {
       "id": 283,
       "name": "./node_modules/react-select/lib/components/Placeholder.js",
