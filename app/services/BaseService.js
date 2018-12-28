@@ -8,7 +8,8 @@ export default class BaseService {
 
     fetch({ url, data = {}, params = {}, method = "GET" }) {
         const headers = {
-            "Authorization": `Bearer ${API_HEADER_AUTH}`
+            "X-Hasura-Access-Key": `${API_HEADER_AUTH}`,
+            "Content-Type": "application/json"
         };
         return axios.request({ url, method, params, data, headers }).then(r => r.data);
     };

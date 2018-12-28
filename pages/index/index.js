@@ -19,18 +19,49 @@ import { DEFAULT_FILTERS, DEFAULT_PARAMS } from '../../app/redux/reducers/Boat';
 // Global
 import { TempDATA } from '../../app/global';
 
+import fetch from 'node-fetch';
+
+import ApolloClient from 'apollo-client'
+import { ApolloProvider } from 'react-apollo'
+import { createHttpLink } from 'apollo-link-http';
+import { setContext } from 'apollo-link-context'
+import { InMemoryCache } from 'apollo-cache-inmemory';
+
+import gql from 'graphql-tag';
+import { Query, Mutation } from 'react-apollo';
+import { from } from 'zen-observable';
+
+import { CountyList } from '../../app/components/ui';
+
+
+const httpLink = createHttpLink({
+    uri:'https://gmnh-backend.herokuapp.com/v1alpha1/graphql', 
+    fetch: fetch
+});
+
+const authLink = setContext((_, { headers }) => {
+  // get the authentication token from local storage if it exists
+  const token = 'postmalone';
+  // return the headers to the context so httpLink can read them
+  return {
+    headers: {
+      ...headers,
+      'X-Hasura-Access-Key': token,
+    }
+  }
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache()
+});
 class HomePage extends Component {
 
     static async getInitialProps() {
-        // const response = await BoatService.getAll();
-        // return { response }
-        // const p= `{
-        //         query: query { country { country_name }}
-        // }`
+
         const param ={ 'action':'search_listings','encoding':'json','foo':'bar', 'pretty':'1', 'country':'UK', 'listing_type': 'buy', 'place_name':'berlin'}
-        const { defaultFilters, defaultParams } = BoatService.getUrlParams(param);
         const response = await BoatService.getAll(param);
-        return { response, defaultFilters, defaultParams };
+        return response;
     }
 
     constructor(props) {
@@ -38,7 +69,7 @@ class HomePage extends Component {
         // console.log(props.response)
         // Default States
         this.state = {
-            results: props.response.items || [],
+            // results: props.response.items || [],
             trips: [
                 { title: "Dubrovnik, Croatia", description: "July 10 - July 17", slug: "berlin", image: require("./images/cities/dubrovnik.jpg") },
                 { title: "Santorini, Greece", description: "July 10 - July 17", slug: "amsterdam", image: require("./images/cities/mykonos.jpg") },
@@ -70,12 +101,22 @@ class HomePage extends Component {
         //     this.setState({ posts });
         // });
     }
-
     render() {
+        return (
+            <ApolloProvider client={client}>
+                <CountyList></CountyList>
+            </ApolloProvider>
+        )
+    }
+
+
+    renderx() {
         const { results, trips, posts, usps, personas, listings } = this.state;
         return (
             <DefaultLayout showSearch={false}>
-                <div className="homepage">
+            
+                <div>jo</div>
+                {/* <div className="homepage">
                     <div className="homepage__hero"  style={{ backgroundImage: `url(${require('./images/hero.jpg')})` }}>
                         <div className="container">
                             <div className="row">
@@ -105,7 +146,7 @@ class HomePage extends Component {
                                         )
                                     })}
                                 </div>
-                            </div>
+                            </div> */}
                             {/* <div className="col-xs-12">
                                 <h2>Amazing homes in Berlin</h2>
                                 <small>Beautifull flats in the german metropole</small>
@@ -148,7 +189,7 @@ class HomePage extends Component {
                                     })}
                                 </div>
                             </div> */}
-                            <div className="col-xs-12">
+                            {/* <div className="col-xs-12">
                                 <h2>Amazing homes in Berlin</h2>
                                 <small>Beautifull flats in the german metropole</small><br />
                                 <div className="row">
@@ -175,7 +216,6 @@ class HomePage extends Component {
                                         return (
                                             <div key={`boat-${o.id}`} className="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                                                 <BoatCard data={o} />
-                                                {/* <BoatCard data={data} /> */}
                                             </div>
                                         )
                                     })}
@@ -191,7 +231,7 @@ class HomePage extends Component {
                                         )
                                     })}
                                 </ScrollableSection>
-                            </div>
+                            </div> */}
                             {/* <div className="col-xs-12">
                                 <h2>Get tipps for your boat trip in our Magazin</h2>
                                 {posts.length == 0 ? <Loading show={true} /> : null}
@@ -209,8 +249,6 @@ class HomePage extends Component {
                                     })}
                                 </div>
                             </div> */}
-                        </div>
-                    </div>
                 <style jsx>{`
                     .homepage { }
                     .homepage__hero { background-size: cover; background-position: center; position: relative; margin-bottom: 30px; }
