@@ -47,14 +47,42 @@ const authLink = setContext((_, { headers }) => {
   }
 });
 
+
+
 const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache()
 });
 class HomePage extends Component {
+    Scream(){
+        const query = `
+        query { 
+            country { 
+                country_name 
+            }
+        }
+        `
+
+        return fetch('https://gmnh-backend.herokuapp.com/v1alpha1/graphql', {
+        method: 'post',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-Hasura-Access-Key': token,
+        },
+        body: JSON.stringify({query})
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+        return data
+        })
+        .catch((e) => {
+        console.log(e)
+        })
+    }
 
     static async getInitialProps() {
-
+        
         const param ={ 'action':'search_listings','encoding':'json','foo':'bar', 'pretty':'1', 'country':'UK', 'listing_type': 'buy', 'place_name':'berlin'}
         const response = await BoatService.getAll(param);
         return response;
@@ -90,17 +118,23 @@ class HomePage extends Component {
     componentWillMount() {
         this.props.setFilters(DEFAULT_FILTERS);
         this.props.setParams(DEFAULT_PARAMS);
-
+        this.Scream()
+        
         // Get Posts
         // MagazineService.getLatestPosts({ include: [856, 339, 2934, 7527] }).then((posts) => {
         //     this.setState({ posts });
         // });
     }
+
+
+
+
+
+
     render() {
-        console.log(CountryList)
         return (
             <ApolloProvider client={client}>
-                <CountryList></CountryList>
+            jo
             </ApolloProvider>
         )
     }
