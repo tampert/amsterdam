@@ -1,8 +1,9 @@
 const express = require('express')
 const next = require('next')
-const request = require('request')
+// const request = require('request')
 
 const dev = process.env.NODE_ENV !== 'production'
+const port = process.env.PORT || 3000
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
@@ -10,17 +11,17 @@ app.prepare()
     .then(() => {
         const server = express()
 
-        server.get('/en/es-autocomplete-forms', (req, res) => {
-            req.pipe(request(`https://www.zizoo.com/en/es-autocomplete-forms?term=${req.query.term}`)).pipe(res);
-        });
+        // server.get('/en/es-autocomplete-forms', (req, res) => {
+        //     req.pipe(request(`https://www.zizoo.com/en/es-autocomplete-forms?term=${req.query.term}`)).pipe(res);
+        // });
 
         server.get('*', (req, res) => {
             return handle(req, res)
         });
 
-        server.listen((process.env.PORT || 3000), "0.0.0.0", (err) => {
+        server.listen(port, "0.0.0.0", (err) => {
             if (err) throw err
-            console.log('> Ready on http://localhost:3000')
+            console.log('> Ready on http://localhost:'+port)
         })
     })
     .catch((ex) => {

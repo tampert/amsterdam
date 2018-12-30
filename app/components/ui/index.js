@@ -8,6 +8,7 @@ import NewsCard from './NewsCard';
 import ShadowCard from './ShadowCard';
 import Loading from './Loading';
 import Pagination from './Pagination';
+import CountryList from './CountryList';
 
 export {
     Pagination,
@@ -19,5 +20,6 @@ export {
     CustomSelect,
     ShadowCard,
     Button,
-    BoatCard
+    BoatCard,
+    CountryList
 }

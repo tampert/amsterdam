@@ -27,26 +27,22 @@ import { createHttpLink } from 'apollo-link-http';
 import { setContext } from 'apollo-link-context'
 import { InMemoryCache } from 'apollo-cache-inmemory';
 
-import gql from 'graphql-tag';
-import { Query, Mutation } from 'react-apollo';
-import { from } from 'zen-observable';
+import { CountryList } from '../../app/components/ui'
 
-import { CountyList } from '../../app/components/ui';
-
-
+const token = 'postmalone';
 const httpLink = createHttpLink({
     uri:'https://gmnh-backend.herokuapp.com/v1alpha1/graphql', 
-    fetch: fetch
+    fetch: fetch,
+    'X-Hasura-Access-Key': token,
 });
 
 const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
-  const token = 'postmalone';
+  
   // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
-      'X-Hasura-Access-Key': token,
     }
   }
 });
@@ -66,7 +62,6 @@ class HomePage extends Component {
 
     constructor(props) {
         super(props);
-        // console.log(props.response)
         // Default States
         this.state = {
             // results: props.response.items || [],
@@ -102,9 +97,10 @@ class HomePage extends Component {
         // });
     }
     render() {
+        console.log(CountryList)
         return (
             <ApolloProvider client={client}>
-                <CountyList></CountyList>
+                <CountryList></CountryList>
             </ApolloProvider>
         )
     }
@@ -114,8 +110,6 @@ class HomePage extends Component {
         const { results, trips, posts, usps, personas, listings } = this.state;
         return (
             <DefaultLayout showSearch={false}>
-            
-                <div>jo</div>
                 {/* <div className="homepage">
                     <div className="homepage__hero"  style={{ backgroundImage: `url(${require('./images/hero.jpg')})` }}>
                         <div className="container">

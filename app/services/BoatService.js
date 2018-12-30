@@ -10,7 +10,7 @@ import { BoatModel } from '../models';
 class BoatService extends BaseService {
 
     getAll(params = {}) {
-        console.log(params)
+        //console.log(params)
         return this.fetch({ url: `${API_ROOT}`, params }).then((response) => {
             // response.items = response.items.map(boat => (new BoatModel(boat)));
             return response.response.listings;

@@ -17,6 +17,7 @@ class CountryList extends Component {
             <div>
                 <ul id="country-list">
                     <li>Country name</li>
+                    <li>Country name</li>
                 </ul>
             </div>
         );
