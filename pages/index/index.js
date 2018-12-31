@@ -19,42 +19,15 @@ import { DEFAULT_FILTERS, DEFAULT_PARAMS } from '../../app/redux/reducers/Boat';
 // Global
 import { TempDATA } from '../../app/global';
 
-import fetch from 'node-fetch';
-
-import ApolloClient from 'apollo-client'
-import { ApolloProvider } from 'react-apollo'
-import { createHttpLink } from 'apollo-link-http';
-import { setContext } from 'apollo-link-context'
-import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import { CountryList } from '../../app/components/ui'
 
-const token = 'postmalone';
-const httpLink = createHttpLink({
-    uri:'https://gmnh-backend.herokuapp.com/v1alpha1/graphql', 
-    fetch: fetch,
-    'X-Hasura-Access-Key': token,
-});
 
-const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
-  
-  // return the headers to the context so httpLink can read them
-  return {
-    headers: {
-      ...headers,
-    }
-  }
-});
-
-
-
-const client = new ApolloClient({
-  link: authLink.concat(httpLink),
-  cache: new InMemoryCache()
-});
 class HomePage extends Component {
-    Scream(){
+   
+    static async getInitialProps() {
+        // https://stackoverflow.com/questions/44610310/node-fetch-post-request-using-graphql-query
+        const param = {};
         const query = `
         query { 
             country { 
@@ -62,30 +35,10 @@ class HomePage extends Component {
             }
         }
         `
-
-        return fetch('https://gmnh-backend.herokuapp.com/v1alpha1/graphql', {
-        method: 'post',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-Hasura-Access-Key': token,
-        },
-        body: JSON.stringify({query})
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data)
-        return data
-        })
-        .catch((e) => {
-        console.log(e)
-        })
-    }
-
-    static async getInitialProps() {
-        
-        const param ={ 'action':'search_listings','encoding':'json','foo':'bar', 'pretty':'1', 'country':'UK', 'listing_type': 'buy', 'place_name':'berlin'}
-        const response = await BoatService.getAll(param);
-        return response;
+        const response = await BoatService.getGraphQLdata(param, query);
+        // console.log(response.data.country)
+       
+        return response.data;
     }
 
     constructor(props) {
@@ -111,6 +64,7 @@ class HomePage extends Component {
                 { image: require("./images/personas/professional.jpg"), params: { nr_guests: 4, cabin_from: 1, boatType: "catamaran,sailboat" } }
             ],
             listings : props.response || [],
+            countries: props.country || [],
             posts: []
         }
     }
@@ -118,7 +72,6 @@ class HomePage extends Component {
     componentWillMount() {
         this.props.setFilters(DEFAULT_FILTERS);
         this.props.setParams(DEFAULT_PARAMS);
-        this.Scream()
         
         // Get Posts
         // MagazineService.getLatestPosts({ include: [856, 339, 2934, 7527] }).then((posts) => {
@@ -129,22 +82,11 @@ class HomePage extends Component {
 
 
 
-
-
     render() {
-        return (
-            <ApolloProvider client={client}>
-            jo
-            </ApolloProvider>
-        )
-    }
-
-
-    renderx() {
-        const { results, trips, posts, usps, personas, listings } = this.state;
+        const { results, trips, posts, usps, personas, listings, countries } = this.state;
         return (
             <DefaultLayout showSearch={false}>
-                {/* <div className="homepage">
+                <div className="homepage">
                     <div className="homepage__hero"  style={{ backgroundImage: `url(${require('./images/hero.jpg')})` }}>
                         <div className="container">
                             <div className="row">
@@ -166,18 +108,31 @@ class HomePage extends Component {
                             <div className="col-xs-12">
                                 <h2>Continue your search</h2>
                                 <div className="row">
-                                    {trips.map((v, i) => {
+                                    {/* {trips.map((v, i) => {
                                         return (
                                             <div className="col-md-3 col-sm-6 col-xs-12" key={`trips-${i}`}>
                                                 <InfoCard {...v} url={{ pathname: "/search", query: { place_name: v.slug, listing_type: "buy" , country:"UK", pretty: "1", foo:"bar", action:"search_listings", encoding:"json"} }} />
                                             </div>
                                         )
+                                    })} */}
+
+                                    {countries.slice(0, 8).map((v, i) => {
+                                          let o = {}
+                                          o.id = i
+                                          o.title = v.country_name
+                                          o.description = "July 10 - July 17"
+                                          o.image = require("./images/cities/dubrovnik.jpg")
+                                        return (
+                                            <div className="col-md-3 col-sm-6 col-xs-12" key={`trips-${o.id}`}>
+                                                <InfoCard {...o} url={{ pathname: "/search", query: { place_name: o.title } }} />
+                                            </div>
+                                        )
                                     })}
                                 </div>
-                            </div> */}
-                            {/* <div className="col-xs-12">
+                            </div>
+                            <div className="col-xs-12">
                                 <h2>Amazing homes in Berlin</h2>
-                                <small>Beautifull flats in the german metropole</small>
+                                <small>Beautifull flats in the german metropole </small>
                                 <ScrollableSection margin={24} mobileMargin={15} className="search-page__headlines__list">
                                     {TempDATA.LOCATIONS.map((data, i) => {
                                         return (
@@ -186,7 +141,7 @@ class HomePage extends Component {
                                     })}
                                 </ScrollableSection>
                             </div>
-                            <div className="col-xs-12 homepage__info">
+                            {/* <div className="col-xs-12 homepage__info">
                                 <div className="row">
                                     {usps.map((v, i) => {
                                         return (
@@ -217,7 +172,7 @@ class HomePage extends Component {
                                     })}
                                 </div>
                             </div> */}
-                            {/* <div className="col-xs-12">
+                            <div className="col-xs-12">
                                 <h2>Amazing homes in Berlin</h2>
                                 <small>Beautifull flats in the german metropole</small><br />
                                 <div className="row">
@@ -250,7 +205,7 @@ class HomePage extends Component {
                                 </div>
                             </div>
                             </div>
-                            <div className="col-xs-12">
+                            {/* <div className="col-xs-12">
                                 <h2>Look for a new home in there German cities.</h2>
                                 <ScrollableSection margin={24} mobileMargin={15} className="search-page__headlines__list">
                                     {TempDATA.ESCAPES.map((data, i) => {
@@ -277,12 +232,13 @@ class HomePage extends Component {
                                     })}
                                 </div>
                             </div> */}
+                            </div></div>
                 <style jsx>{`
                     .homepage { }
                     .homepage__hero { background-size: cover; background-position: center; position: relative; margin-bottom: 30px; }
                     // .homepage__hero:before { content: ''; display: block; position: absolute; left: 0; top: 0; width: 100%; height: 100%; z-index: 1; background: rgba(0,0,0,0.3); } 
-                    .homepage__hero__container { height: 400px; position: relative; }
-                    .homepage__hero__container h1 { text-align: left; font-size: 70px; color: #ffffff; margin-bottom: 30px; font-weight: bold; line-height: 70px; }
+                    .homepage__hero__container { height: 400px; position: relative;}
+                    .homepage__hero__container h1 { text-align: left; font-size: 70px; color: #ffffff; margin-bottom: 30px; font-weight: bold; line-height: 70px; -webkit-text-stroke-width: 2px; -webkit-text-stroke-color: rgba(60,60,60,0.3);}
                     .homepage__hero__form { border-radius: 10px; position: relative; background-color: #FFFFFF;	box-shadow: 0 2px 20px 0 rgba(0,0,0,0.1); padding: 15px; }
                     .homepage__info { padding-top: 15px; padding-bottom: 15px }
                     @media all and (max-width: 1024px) {

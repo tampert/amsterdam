@@ -6,7 +6,7 @@ import { API_HEADER_AUTH } from '../global';
 
 export default class BaseService {
 
-    fetch({ url, data = {}, params = {}, method = "GET" }) {
+    fetch({ url, data = {}, params = {}, method }) {
         const headers = {
             "X-Hasura-Access-Key": `${API_HEADER_AUTH}`,
             "Content-Type": "application/json"

@@ -9,9 +9,15 @@ import { BoatModel } from '../models';
 
 class BoatService extends BaseService {
 
+    getGraphQLdata(params = {}, query) {
+        return this.fetch({ url: 'https://gmnh-backend.herokuapp.com/v1alpha1/graphql', params, data:JSON.stringify({query}), method:'POST' }).then((response) => {
+            return response;
+        });
+    }
+
     getAll(params = {}) {
         //console.log(params)
-        return this.fetch({ url: `${API_ROOT}`, params }).then((response) => {
+        return this.fetch({ url: `${API_ROOT}`, params, method:'GET' }).then((response) => {
             // response.items = response.items.map(boat => (new BoatModel(boat)));
             return response.response.listings;
         });
@@ -19,7 +25,7 @@ class BoatService extends BaseService {
 
     getBoat(boat) {
         const params = { boat };
-        return this.fetch({ url: `${API_ROOT}/offers`, params }).then((response) => {
+        return this.fetch({ url: `${API_ROOT}/offers`, params, method:'GET' }).then((response) => {
             const temp = response.items.map(boat => (new BoatModel(boat)));
             return temp.length == 1 ? temp[0] : null;
         });
